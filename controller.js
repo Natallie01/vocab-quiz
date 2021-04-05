@@ -6,23 +6,23 @@ $(document).ready(function () {
         },
         {
             "word":"starbucks",
-            "clue":"a company"
+            "clue":"A company"
         },
         {
             "word":"macaroni",
-            "clue":"a kind of food"
+            "clue":"A kind of food"
         },
         {
             "word":"washington",
-            "clue":"a state"
+            "clue":"A state"
         },
         {
             "word":"turtle",
-            "clue":"a creature"
+            "clue":"A creature"
         },
         {
             "word":"guillotine",
-            "clue":"a machine"
+            "clue":"A machine"
         }
     ]
     
