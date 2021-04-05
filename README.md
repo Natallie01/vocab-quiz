@@ -1,6 +1,6 @@
 # Vocab Quiz
 # Vocab Quiz Display
-<img src="./assets/images/mockupwd.gif" width="600"/>
+<img src="./images/mockup.png" width="600"/>
 
 # Link to Published URL
 https://natallie01.github.io/vocab-quiz/
