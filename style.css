@@ -1,0 +1,169 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+
+  /*background-color:#0d8fa7;*/
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-color: #cccccc;
+
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+#topbar{
+ height:50px;
+ margin:auto;
+ margin-top:50px;
+ color:#FFF;
+ font-size:40px;
+ width:800px;
+ border-bottom:solid white 1px;
+}
+
+#gameContent{
+ margin:auto;   
+ width:800px;
+ height:400px;
+ position:relative;
+ overflow:hidden;
+ background-color:hsl(268, 54%, 55%);
+}
+
+.spacer{height:30px;}
+
+
+
+#gameTitle{
+ margin-top:100px;
+ text-align:center;
+ font-size:50px;
+ color:#fff;}
+
+.button{font-size:18px;
+ width:100px;
+ margin:auto;
+ margin-top:20px;
+ cursor:pointer;
+ border:solid 1px white;
+ border-radius:4px;
+ text-align:center;
+ color:#fff;}
+
+.button:hover{
+ background-color:#6AB0FD;}
+
+#replay{
+ margin-left:0px;}
+ 
+
+
+
+
+#wordHolder{
+ margin-top:50px;
+ margin-left:150px;
+}
+ 
+#clueHolder{
+ margin-top:130px;
+ margin-left:150px;
+}
+ 
+#guesses{
+ margin-top:20px;
+ margin-left:150px;
+}
+ 
+#pixHolder{
+ margin-left:30px;
+ width:75px;
+ float:left;
+ overflow:hidden;
+}
+ 
+#pixHolder img{
+ position:relative;}
+ 
+#feedback{
+ margin-top:20px;
+ margin-left:150px;
+ font-size:34px;
+ color:#fff;
+}
+ 
+.tile{
+ height:40px;
+ width:40px;
+ float:left;
+ margin-right:10px;
+ background-color:white;
+ text-align:center;
+ font-size:24px;
+ color:#333;
+ padding-top:5px;
+}
+ 
+#finalMessage{
+ text-align:center;
+ font-size:40px;
+ color:#fff;
+ width:90%;
+ margin:auto;
+ margin-top:100px;
+}
+ 
+#dummy{
+ position:absolute;
+ left:-200px;
+ top:0px;
+}
+ 
+@media screen and (max-width:800px) {
+ #topbar{
+     margin-left:1%;
+     margin-right:1%;   
+     width:96%;
+ }
+ #gameContent{
+     margin:1%; 
+     width:98%;
+ }
+ .tile{
+     height:20px;
+     width:20px;
+     font-size:14px;
+ }
+}
+ 
+@media screen and (max-width:560px) {
+ #wordHolder{
+     margin-top:10px;
+     margin-left:10px;
+ }
+ #clueHolder{
+     margin-top:130px;
+     margin-left:85px;
+ }
+ #guesses{
+     margin-top:20px;
+     margin-left:85px;
+     
+ }
+ /*#pixHolder{
+     margin-top:50px;
+     margin-left:10px;
+     position:absolute;*/
+ }
+ #feedback{
+     margin-left:85px;
+     font-size:28px;
+ }
+ #finalMessage{
+     font-size:30px;
+ }
+
+
