@@ -1,54 +1,58 @@
 $(document).ready(function () {
-    const QUESTIONS = [
-        {
-            "word":"kangaroo",
-            "clue":"It starts with K"
-        },
-        {
-            "word":"starbucks",
-            "clue":"A company"
-        },
-        {
-            "word":"macaroni",
-            "clue":"A kind of food"
-        },
-        {
-            "word":"washington",
-            "clue":"A state"
-        },
-        {
-            "word":"turtle",
-            "clue":"A creature"
-        },
-        {
-            "word":"guillotine",
-            "clue":"A machine"
-        }
-    ]
+    // const QUESTIONS = [
+    //     {
+    //         "word":"kangaroo",
+    //         "clue":"It starts with K"
+    //     },
+    //     {
+    //         "word":"starbucks",
+    //         "clue":"A company"
+    //     },
+    //     {
+    //         "word":"macaroni",
+    //         "clue":"A kind of food"
+    //     },
+    //     {
+    //         "word":"washington",
+    //         "clue":"A state"
+    //     },
+    //     {
+    //         "word":"turtle",
+    //         "clue":"A creature"
+    //     },
+    //     {
+    //         "word":"guillotine",
+    //         "clue":"A machine"
+    //     }
+    // ]
     
-    var questionBank=new Array;
-    var wordArray=new Array;
-    var previousGuesses=new Array;
-    var currentWord;
-    var currentClue;
-    var wrongAnswerCount;
-    for(i=0;i<QUESTIONS.length;i++){ 
-        questionBank[i]=new Array;
-        questionBank[i][0]=QUESTIONS[i].word;
-        questionBank[i][1]=QUESTIONS[i].clue;
-    }
-    titleScreen();
+    // var questionBank=new Array;
+    // var wordArray=new Array;
+    // var previousGuesses=new Array;
+    // var currentWord;
+    // var currentClue;
+    // var wrongAnswerCount;
+    // for(i=0;i<QUESTIONS.length;i++){ 
+    //     questionBank[i]=new Array;
+    //     questionBank[i][0]=QUESTIONS[i].word;
+    //     questionBank[i][1]=QUESTIONS[i].clue;
+    // }
+    // titleScreen();
 
-//api for words
-    fetch('https://puzzle.mead.io/puzzle')
-    .then((res) => {
-    
-        if (res.status === 200) {
-            return res.json()
-        }
-    
-    })
-    .then((data) => console.log(data))
+    var questionArray = [];
+    var currentWordIndex = 0;
+    var loadWord = questionArray[currentWordIndex];
+
+    var apiOneUrl = 'https://puzzle.mead.io/puzzle';
+    //api for words
+    var fetchWords = function() {
+        fetch(apiOneUrl).then(function(response){
+            response.json().then(function(data){
+                questionArray.push(data.puzzle);
+                console.log(questionArray);
+            })
+        })
+    }
 
 function titleScreen(){
 $('#gameContent').append('<div id="gameTitle">Lets Learn Some Words!</div><div id="startButton" class="button">BEGIN</div>');       
@@ -58,38 +62,37 @@ $('#startButton').on("click",function (){gameScreen()});
 
 
 function gameScreen(){
-$('#gameContent').empty();
-//$('#gameContent').append('<div id="pixHolder"><img id="hangman" src="man.png"></div>');
-$('#gameContent').append('<div id="wordHolder"></div>');
-$('#gameContent').append('<div id="clueHolder"></div>');
-$('#gameContent').append('<div id="guesses">Previous guesses:</div>');
-$('#gameContent').append('<div id="feedback"></div>');
-$('#gameContent').append('<form><input type="text" id="dummy" ></form>');
+    $('#gameContent').empty();
+    $('#gameContent').append('<div id="wordHolder"></div>');
+    $('#gameContent').append('<div id="clueHolder"></div>');
+    $('#gameContent').append('<div id="guesses">Previous guesses:</div>');
+    $('#gameContent').append('<div id="feedback"></div>');
+    $('#gameContent').append('<form><input type="text" id="dummy" ></form>');
         
-getWord();
-var numberOfTiles=currentWord.length;
-wrongAnswerCount=0;
-previousGuesses=[];
+    getWord();
+    var numberOfTiles=loadWord.length;
+    wrongAnswerCount=0;
+    previousGuesses=[];
          
-for(i=0;i<numberOfTiles;i++){
-    $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
-}
+    for(i=0;i<numberOfTiles;i++){
+        $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
+    }
         
-$('#clueHolder').append("HINT: "+currentClue);
+    $('#clueHolder').append("HINT: "+currentClue);
 
 
-$(document).on("keyup",handleKeyUp);
-$(document).on("click",function(){$('#dummy').focus();});
-$('#dummy').focus();
+    $(document).on("keyup",handleKeyUp);
+    $(document).on("click",function(){$('#dummy').focus();});
+    $('#dummy').focus();
 }//gamescreen
         
         
 function getWord(){
-var rnd=Math.floor(Math.random()*questionBank.length);
-currentWord=questionBank[rnd][0];
-currentClue=questionBank[rnd][1];
-questionBank.splice(rnd,1); 
-wordArray=currentWord.split("");            
+    var rnd=Math.floor(Math.random()*questionBank.length);
+    currentWord=questionBank[rnd][0];
+    currentClue=questionBank[rnd][1];
+    questionBank.splice(rnd,1); 
+    wordArray=currentWord.split("");            
 }//getword
         
 
