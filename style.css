@@ -15,36 +15,42 @@ html, body {
     }
 
 #topbar{
+ font-family: 'RocknRoll One', sans-serif;
+ text-shadow: 2px 0px 3px white;
  margin:auto;
  margin-top:50px;
  color:#FFF;
- width: 300px;
  font-size:40px;
  text-align: center;
  background-color:rgb(136, 78, 202);
  border-radius: 15px;
-}
-
-#gameContent{
- margin:auto;   
- width:800px;
- height:400px;
- position:relative;
- overflow:hidden;
- background-color:hsl(268, 54%, 55%);
-
- border-radius: 15px;
+ width: 400px;
 }
 
 .spacer{height:30px;}
 
 
+#gameContent{
+    margin:auto;   
+    height:400px;
+    position:relative;
+    overflow:hidden;
+    background-color:hsl(268, 54%, 55%);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 #gameTitle{
  margin-top:100px;
+ font-family: 'RocknRoll One', sans-serif;
  text-align:center;
  font-size:50px;
- color:#fff;}
+ color:#fff;
+}
 
 .button{font-size:18px;
  width:100px;
@@ -54,31 +60,30 @@ html, body {
  border:solid 1px white;
  border-radius:4px;
  text-align:center;
- color:#fff;}
+ color:#fff;
+}
 
 .button:hover{
- background-color:#6AB0FD;}
+ background-color:#6AB0FD;
+}
 
 #replay{
- margin-left:0px;}
- 
-
-
-
+ margin-left:0px;
+}
 
 #wordHolder{
- margin-top:50px;
- margin-left:150px;
+    display: flex;
+    justify-content: space-around;
 }
  
 #clueHolder{
- margin-top:130px;
- margin-left:150px;
+ color: #fff;
+ font-size: 28px;
 }
  
 #guesses{
- margin-top:20px;
- margin-left:150px;
+ color: #fff;
+ font-size: 28px;
 }
  
 #pixHolder{
@@ -101,7 +106,6 @@ html, body {
 .tile{
  height:40px;
  width:40px;
- float:left;
  margin-right:10px;
  background-color:white;
  text-align:center;
@@ -124,44 +128,58 @@ html, body {
  left:-200px;
  top:0px;
 }
+
+@media screen and (max-width:768px) {
+
+    .tile{
+        height:32px;
+        width:32px;
+        font-size:14px;
+    }
+
+    #gameTitle {
+        font-size: 45px;
+    }
  
-@media screen and (max-width:800px) {
- #gameContent{
-     margin:1%; 
-     width:98%;
- }
- .tile{
-     height:20px;
-     width:20px;
-     font-size:14px;
- }
 }
- 
+
 @media screen and (max-width:560px) {
- #wordHolder{
-     margin-top:10px;
-     margin-left:10px;
- }
- #clueHolder{
-     margin-top:130px;
-     margin-left:85px;
- }
- #guesses{
-     margin-top:20px;
-     margin-left:85px;
-     
- }
- /*#pixHolder{
-     margin-top:50px;
-     margin-left:10px;
-     position:absolute;*/
- }
- #feedback{
-     margin-left:85px;
-     font-size:28px;
- }
- #finalMessage{
-     font-size:30px;
- }
+    .tile{
+        height:20px;
+        width:20px;
+        font-size:14px;
+    }
 
+    #topbar {   
+        width: 300px;
+        font-size: 28px;
+    }
 
+    #clueHolder{
+        font-size: 20px;
+    }
+ 
+    #guesses{
+        font-size: 15px;
+    }
+
+    #gameTitle {
+        font-size: 40px;
+    }
+
+    /*#pixHolder{
+        margin-top:50px;
+        margin-left:10px;
+        position:absolute;*/
+    }
+
+    #feedback{
+        margin-left:85px;
+        font-size:28px;
+    }
+
+    #finalMessage{
+        font-size:30px;
+    }
+
+}
