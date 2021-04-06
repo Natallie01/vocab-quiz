@@ -15,22 +15,23 @@ $(document).ready(function () {
 
     titleScreen();
 
-    var apiOneUrl = 'https://puzzle.mead.io/puzzle';
+    var apiOneUrl = 'https://random-words-api.vercel.app/word';
     //api for words
     var fetchWords = function() {
         fetch(apiOneUrl).then(function(response){
             response.json().then(function(data){
-                currentWord.push(data.puzzle);
-                console.log(currentWord);
+                currentWord.push(data[0].word);
+                console.log(data[0].word);
                 console.log(currentWord[currentWordIndex].length);
+                console.log(currentWord);
 
                 var numberOfTiles= currentWord[currentWordIndex].length;
-            wrongAnswerCount=0;
-            previousGuesses=[];
+                wrongAnswerCount=0;
+                previousGuesses=[];
          
-            for(i=0;i<numberOfTiles;i++){
-                $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
-            }
+                for(i=0;i<numberOfTiles;i++){
+                    $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
+                }
 
             });
         })
@@ -63,7 +64,9 @@ $(document).ready(function () {
             var found=false;
             var previouslyEntered=false;
             var input=String.fromCharCode(event.keyCode).toLowerCase();
-            wordArray = currentWord[currentWordIndex].split("");
+            var lowerWordArray = currentWord[currentWordIndex].toLowerCase();
+            wordArray = lowerWordArray.split("");
+            console.log(lowerWordArray);
     
 
             for(i=0;i<previousGuesses.length;i++){if(input==previousGuesses[i]){previouslyEntered=true;}}
@@ -87,7 +90,7 @@ $(document).ready(function () {
 
     function checkAnswer(){
         var currentAnswer="";   
-        for(i=0;i<currentWord.length;i++){
+        for(i=0;i<wordArray.length;i++){
             currentAnswer+=($('#t'+i).text());
         }       
         if(currentAnswer==currentWord){
@@ -105,6 +108,7 @@ $(document).ready(function () {
     }//wronganswer
     
     function victoryMessage(){
+        currentWordIndex++;
         document.activeElement.blur();
         $(document).off("keyup", handleKeyUp);
         $('#feedback').append("CORRECT!<br><br><div id='replay' class='button'>CONTINUE</div>");
@@ -116,6 +120,7 @@ $(document).ready(function () {
     }//victory
     
     function defeatMessage(){
+        currentWordIndex++;
         document.activeElement.blur();
         $(document).off("keyup", handleKeyUp);
         $('#feedback').append("WRONG!<br>(answer= "+ currentWord +")<div id='replay' class='button'>CONTINUE</div>");
