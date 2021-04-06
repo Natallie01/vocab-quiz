@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     titleScreen();
 
-    var apiOneUrl = 'https://random-words-api.vercel.app/word';
+    var apiOneUrl = 'https://san-random-words.vercel.app';
     //api for words
     var fetchWords = function() {
         fetch(apiOneUrl).then(function(response){
