@@ -52,10 +52,10 @@ html, body {
  color:#fff;
 }
 
-.button{font-size:18px;
+.button{
+ font-size:18px;
  width:100px;
  margin:auto;
- margin-top:20px;
  cursor:pointer;
  border:solid 1px white;
  border-radius:4px;
@@ -79,6 +79,7 @@ html, body {
 #clueHolder{
  color: #fff;
  font-size: 28px;
+ margin-left: 1%;
 }
  
 #guesses{
@@ -97,8 +98,8 @@ html, body {
  position:relative;}
  
 #feedback{
- margin-top:20px;
- margin-left:150px;
+ display: flex;
+ justify-content: space-around;
  font-size:34px;
  color:#fff;
 }
@@ -140,6 +141,10 @@ html, body {
     #gameTitle {
         font-size: 45px;
     }
+
+    #feedback {
+        font-size: 27px;
+    }
  
 }
 
@@ -174,8 +179,7 @@ html, body {
     }
 
     #feedback{
-        margin-left:85px;
-        font-size:28px;
+        font-size: 20px;
     }
 
     #finalMessage{
