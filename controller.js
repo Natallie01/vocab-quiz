@@ -93,11 +93,13 @@ $(document).ready(function () {
 
 
     function checkAnswer(){
-        var currentAnswer="";   
+        var currentAnswer= "";
+        var lowerWordArray = currentWord[currentWordIndex].toLowerCase();
         for(i=0;i<wordArray.length;i++){
             currentAnswer+=($('#t'+i).text());
+            console.log(currentAnswer);
         }       
-        if(currentAnswer==currentWord){
+        if(currentAnswer==lowerWordArray){
             victoryMessage();
         };
     }//checkanswer
