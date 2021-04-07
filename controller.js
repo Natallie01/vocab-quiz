@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     var currentWord = [];
     var currentWordIndex = 0;
-    var count = 0;
     var wordArray = "";
     var previousGuesses= [];
     // var currentClue;
@@ -114,26 +113,25 @@ $(document).ready(function () {
     }//wronganswer
     
     function victoryMessage(){
-        currentWordIndex++;
         document.activeElement.blur();
         $(document).on("keyup", handleKeyUp);
         $('#feedback').append("<h2> Good job! You got it correct!<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
-                count++
+                currentWordIndex++;
                 fetchWords()}
             else{finalPage()}
         });
     }//victory
     
     function defeatMessage(){
-        currentWordIndex++;
+        
         document.activeElement.blur();
         $(document).on("keyup", handleKeyUp);
-        $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[count] + "<h2> <div id='replay' class='button'>CONTINUE</div>");
+        $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[currentWordIndex] + "<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
-                count++
+                currentWordIndex++;
                 fetchWords()}
             else{finalPage()}
         });
