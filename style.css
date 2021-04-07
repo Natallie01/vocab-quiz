@@ -103,8 +103,13 @@ html, body {
  align-items: center;
  justify-content: space-between;
  margin: 3px;
- font-size:50px;
+ font-size:large;
  color:#fff;
+}
+
+#feedback h2 {
+    font-size: 30px;
+    text-align: center;
 }
  
 .tile{
@@ -126,7 +131,7 @@ html, body {
  margin:auto;
  margin-top:100px;
 }
- 
+
 #dummy{
  position:absolute;
  left:-200px;
@@ -139,19 +144,25 @@ html, body {
         height:32px;
         width:32px;
         font-size:14px;
+        padding-top: 3px;
     }
 
     #gameTitle {
         font-size: 45px;
     }
+
+    /* #feedback h2 {
+        font-size: 30px;
+    } */
  
 }
 
 @media screen and (max-width:560px) {
     .tile{
-        height:20px;
-        width:20px;
+        height:24px;
+        width:24px;
         font-size:14px;
+        padding-top: 2px;
     }
 
     #topbar {   
@@ -177,9 +188,9 @@ html, body {
         position:absolute;*/
     }
 
-    #feedback{
+    /* #feedback h2{
         font-size: 20px;
-    }
+    } */
 
     #finalMessage{
         font-size:30px;

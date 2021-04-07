@@ -117,7 +117,7 @@ $(document).ready(function () {
         currentWordIndex++;
         document.activeElement.blur();
         $(document).on("keyup", handleKeyUp);
-        $('#feedback').append("Good job! You got it correct!<div id='replay' class='button'>CONTINUE</div>");
+        $('#feedback').append("<h2> Good job! You got it correct!<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
                 count++
@@ -130,7 +130,7 @@ $(document).ready(function () {
         currentWordIndex++;
         document.activeElement.blur();
         $(document).on("keyup", handleKeyUp);
-        $('#feedback').append("WRONG! The correct answer was " + currentWord[count] + "<div id='replay' class='button'>CONTINUE</div>");
+        $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[count] + "<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
                 count++
