@@ -2,9 +2,9 @@ $(document).ready(function () {
 
     var currentWord = [];
     var currentWordIndex = 0;
-
+    var count = 0;
     var wordArray = "";
-    var previousGuesses=new Array;
+    var previousGuesses= [];
     // var currentClue;
     var wrongAnswerCount;
 
@@ -22,13 +22,18 @@ $(document).ready(function () {
             response.json().then(function(data){
                 currentWord.push(data[0].word);
                 console.log(data[0].word);
+                console.log(data[0].definition);
                 console.log(currentWord[currentWordIndex].length);
                 console.log(currentWord);
 
                 var numberOfTiles= currentWord[currentWordIndex].length;
                 wrongAnswerCount=0;
                 previousGuesses=[];
-         
+                
+                $('#wordHolder').html("")
+                $('#guesses').html("Previous guesses: ")
+                $('#feedback').html("")
+                $('#clueHolder').html("HINT: " + data[0].definition)
                 for(i=0;i<numberOfTiles;i++){
                     $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
                 }
@@ -67,8 +72,7 @@ $(document).ready(function () {
             var lowerWordArray = currentWord[currentWordIndex].toLowerCase();
             wordArray = lowerWordArray.split("");
             console.log(lowerWordArray);
-    
-
+           
             for(i=0;i<previousGuesses.length;i++){if(input==previousGuesses[i]){previouslyEntered=true;}}
             
                 if(!previouslyEntered){
@@ -110,10 +114,11 @@ $(document).ready(function () {
     function victoryMessage(){
         currentWordIndex++;
         document.activeElement.blur();
-        $(document).off("keyup", handleKeyUp);
+        $(document).on("keyup", handleKeyUp);
         $('#feedback').append("CORRECT!<br><br><div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
+                count++
                 fetchWords()}
             else{finalPage()}
         });
@@ -122,10 +127,11 @@ $(document).ready(function () {
     function defeatMessage(){
         currentWordIndex++;
         document.activeElement.blur();
-        $(document).off("keyup", handleKeyUp);
-        $('#feedback').append("WRONG!<br>(answer= "+ currentWord +")<div id='replay' class='button'>CONTINUE</div>");
+        $(document).on("keyup", handleKeyUp);
+        $('#feedback').append("WRONG!<br>(answer= "+ currentWord[count] +")<div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
+                count++
                 fetchWords()}
             else{finalPage()}
         });
