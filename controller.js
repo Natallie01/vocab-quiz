@@ -19,6 +19,7 @@ $(document).ready(function () {
     var fetchWords = function() {
         fetch(apiOneUrl).then(function(response){
             response.json().then(function(data){
+                console.log(data);
                 currentWord.push(data[0].word);
                 console.log(data[0].word);
                 console.log(data[0].definition);
