@@ -8,19 +8,17 @@ console.log(randomIndex);
 console.log(dataArray[randomIndex]);
 
 var testingApi = function() {
-    fetch("https://wordsapiv1.p.rapidapi.com/words/" + dataArray[randomIndex] + "/definitions", {
-	    "method": "GET",
-	    "headers": {"x-rapidapi-key": "7daefd239dmshb59ea7935809085p1e1b4djsn19eb3a98f6ad","x-rapidapi-host": "wordsapiv1.p.rapidapi.com"}
-}).then(function(response){
-    response.json().then(function(data){
-        console.log(data);
+    fetch("https://wordsapiv1.p.rapidapi.com/words/" + dataArray[randomIndex] + "/definitions", {"method": "GET","headers": {"x-rapidapi-key": "7daefd239dmshb59ea7935809085p1e1b4djsn19eb3a98f6ad","x-rapidapi-host": "wordsapiv1.p.rapidapi.com"}
+    }).then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+        })
     })
-})
 }
 
 testingApi();
 
-
+// Absurd Idea Up Above
 
 $(document).ready(function () {
 
