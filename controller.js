@@ -45,6 +45,16 @@ $(document).ready(function () {
         })    
     }
 
+    //Second API for images
+    var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
+    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('');
+    $.getJSON(URL, function(data){
+        if (parseInt(data.totalHits) > 0)
+        $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
+        else
+        console.log('No hits');
+    });
+
     function gameScreen(){
 
         fetchWords();
@@ -61,7 +71,9 @@ $(document).ready(function () {
         $(document).on("keyup",handleKeyUp);
         $(document).on("click",function(){$('#dummy').focus();});
         $('#dummy').focus();
+        
     }//gamescreen
+
 
     function handleKeyUp(event) {
 
