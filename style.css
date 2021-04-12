@@ -43,9 +43,16 @@ html, body {
     align-items: center;
 }
 
+#rules {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'RocknRoll One', sans-serif;
+}
+
 
 #gameTitle{
- margin-top:100px;
+ margin-top:80px;
  font-family: 'RocknRoll One', sans-serif;
  text-align:center;
  font-size:50px;
@@ -128,11 +135,19 @@ html, body {
  
 #finalMessage{
  text-align:center;
+ font-family: 'RocknRoll One', sans-serif;
  font-size:40px;
  color:#fff;
  width:90%;
  margin:auto;
  margin-top:100px;
+}
+
+#answerCount {
+    font-size: 30px;
+    font-family: 'RocknRoll One', sans-serif;
+    color: white;
+    margin-bottom: 50px;
 }
 
 #dummy{

@@ -11,9 +11,10 @@ $(document).ready(function () {
     var wordArray = "";
     var previousGuesses= [];
     var wrongAnswerCount;
+    var correctAnswerCount = 0;
 
     function titleScreen(){
-        $('#gameContent').append('<div id="gameTitle">Lets Learn Some Words!</div><div id="startButton" class="button">BEGIN</div>');       
+        $('#gameContent').append('<div id="gameTitle">Lets Learn Some Words!</div><div id="rules">Instructions: Given a hint, press a key to guess a letter(s) that make up the word, but be careful, you only get 6 wrong guesses!</div><div id="startButton" class="button">BEGIN</div>');       
         $('#startButton').on("click",function (){gameScreen()});
     }//display game
 
@@ -104,6 +105,7 @@ $(document).ready(function () {
         }       
         if(currentAnswer==lowerWordArray){
             victoryMessage();
+            correctAnswerCount++;
         };
     }//checkanswer
     
@@ -143,7 +145,7 @@ $(document).ready(function () {
 
     function finalPage(){
         $('#gameContent').empty();
-        $('#gameContent').append('<div id="finalMessage">You have finished all the words in the game!</div>');
+        $('#gameContent').append('<div id="finalMessage">Game Finished!</div><div id=answerCount>Good job, you got ' + correctAnswerCount + ' words right!</div>');
     }//finalpage
 
 });//doc ready
