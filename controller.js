@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     //Second API for images
     var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
-    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('');
+    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('bruise');
     $.getJSON(URL, function(data){
         if (parseInt(data.totalHits) > 0)
         $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
