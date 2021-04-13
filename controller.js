@@ -136,7 +136,7 @@ $(document).ready(function () {
         $(document).on("keyup", handleKeyUp);
         $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[currentWordIndex] + "<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
-            if(currentWordIndex<6){
+            if(currentWordIndex<5){
                 currentWordIndex++;
                 fetchWords()}
             else{finalPage()}
@@ -146,6 +146,15 @@ $(document).ready(function () {
     function finalPage(){
         $('#gameContent').empty();
         $('#gameContent').append('<div id="finalMessage">Game Finished!</div><div id=answerCount>Good job, you got ' + correctAnswerCount + ' words right!</div>');
-    }//finalpage
+        $('#gameContent').append('<div><button id="replayGame">Do Something</button></div>');
+        if(document.getElementById('replayGame').clicked == true)
+            {
+                gameScreen();
+                console.log("clicked!");
+        };
+    
+    };//finalpage
+
+    
 
 });//doc ready
