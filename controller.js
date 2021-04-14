@@ -11,9 +11,10 @@ $(document).ready(function () {
     var wordArray = "";
     var previousGuesses= [];
     var wrongAnswerCount;
+    var correctAnswerCount = 0;
 
     function titleScreen(){
-        $('#gameContent').append('<div id="gameTitle">Lets Learn Some Words!</div><div id="startButton" class="button">BEGIN</div>');       
+        $('#gameContent').append('<div id="gameTitle">Lets Learn Some Words!</div><div id="rules">Instructions: Given a hint, press a key to guess a letter(s) that make up the word, but be careful, you only get 6 wrong guesses!</div><div id="startButton" class="button">BEGIN</div>');       
         $('#startButton').on("click",function (){gameScreen()});
     }//display game
 
@@ -21,12 +22,13 @@ $(document).ready(function () {
 
     //api for word defition
     var fetchWords = function() {
-        var randomIndex = Math.floor(Math.random()*dataArray.length-1);
-        currentWord.push(dataArray[randomIndex]);
+        var randomIndex push= Math.floor(Math.random()*dataArray.length-1);
+        currentWord.(dataArray[randomIndex]);
         console.log(currentWord);
         fetch("https://wordsapiv1.p.rapidapi.com/words/" + dataArray[randomIndex] + "/definitions", {"method": "GET","headers": {"x-rapidapi-key": "7daefd239dmshb59ea7935809085p1e1b4djsn19eb3a98f6ad","x-rapidapi-host": "wordsapiv1.p.rapidapi.com"}
         }).then(function(response){
             response.json().then(function(data){
+                //call images here
                 console.log(data);
                 console.log(data.definitions[0].definition);
 
@@ -45,9 +47,9 @@ $(document).ready(function () {
         })    
     }
 
-    //Second API for images
+    //api for images
     var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
-    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('bruise');
+    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent(dataArray[]);
     $.getJSON(URL, function(data){
         if (parseInt(data.totalHits) > 0)
         $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
@@ -71,9 +73,7 @@ $(document).ready(function () {
         $(document).on("keyup",handleKeyUp);
         $(document).on("click",function(){$('#dummy').focus();});
         $('#dummy').focus();
-        
     }//gamescreen
-
 
     function handleKeyUp(event) {
 
@@ -116,6 +116,7 @@ $(document).ready(function () {
         }       
         if(currentAnswer==lowerWordArray){
             victoryMessage();
+            correctAnswerCount++;
         };
     }//checkanswer
     
@@ -144,7 +145,7 @@ $(document).ready(function () {
         
         document.activeElement.blur();
         $(document).on("keyup", handleKeyUp);
-        $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[currentWordIndex] + "<h2> <div id='replay' class='button'>CONTINUE</div>");
+        $('#feedback').append("<h2> WRONG! The correct answer was " + currentWord[currentWordIndex] + ".<h2> <div id='replay' class='button'>CONTINUE</div>");
         $('#replay').on("click",function (){
             if(currentWordIndex<6){
                 currentWordIndex++;
@@ -155,7 +156,7 @@ $(document).ready(function () {
 
     function finalPage(){
         $('#gameContent').empty();
-        $('#gameContent').append('<div id="finalMessage">You have finished all the words in the game!</div>');
+        $('#gameContent').append('<div id="finalMessage">Game Finished!</div><div id=answerCount>Good job, you got ' + correctAnswerCount + ' words right!</div>');
     }//finalpage
 
 });//doc ready
