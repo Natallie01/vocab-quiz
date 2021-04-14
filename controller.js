@@ -22,13 +22,14 @@ $(document).ready(function () {
 
     //api for word defition
     var fetchWords = function() {
-        var randomIndex push= Math.floor(Math.random()*dataArray.length-1);
-        currentWord.(dataArray[randomIndex]);
+        var randomIndex = Math.floor(Math.random()*dataArray.length-1);
+        currentWord = dataArray[randomIndex];
         console.log(currentWord);
         fetch("https://wordsapiv1.p.rapidapi.com/words/" + dataArray[randomIndex] + "/definitions", {"method": "GET","headers": {"x-rapidapi-key": "7daefd239dmshb59ea7935809085p1e1b4djsn19eb3a98f6ad","x-rapidapi-host": "wordsapiv1.p.rapidapi.com"}
         }).then(function(response){
             response.json().then(function(data){
                 //call images here
+                fetchImages();
                 console.log(data);
                 console.log(data.definitions[0].definition);
 
@@ -36,32 +37,38 @@ $(document).ready(function () {
                 wrongAnswerCount=0;
                 previousGuesses=[];
                 
+                //$('#imageHolder').html("")
                 $('#wordHolder').html("")
                 $('#guesses').html("Previous guesses: ")
                 $('#feedback').html("")
                 $('#clueHolder').html("HINT: " + data.definitions[0].definition)
                 for(i=0;i<numberOfTiles;i++){
-                    $('#wordHolder').append('<div class="tile" id=t'+i+'></div>');
+                    $('#wordHolder').append('<div class="tile" id=t'+i+'></div>'); 
                 }
             })
         })    
     }
 
     //api for images
-    var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
-    var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent(dataArray[]);
-    $.getJSON(URL, function(data){
+    var fetchImages = function() {
+        var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
+        var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent(currentWord);
+        
+        $.getJSON(URL, function(data){
         if (parseInt(data.totalHits) > 0)
         $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
         else
         console.log('No hits');
     });
 
+    }
+  
     function gameScreen(){
 
         fetchWords();
 
         $('#gameContent').empty();
+        //$('#gameContent').append('<div id="imageHolder"></div>');
         $('#gameContent').append('<div id="wordHolder"></div>');
         $('#gameContent').append('<div id="clueHolder"></div>');
         $('#gameContent').append('<div id="guesses">Previous guesses:</div>');
