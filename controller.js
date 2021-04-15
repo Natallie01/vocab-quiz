@@ -54,14 +54,13 @@ $(document).ready(function () {
         var API_KEY = '223738-52bd77513d385ea48fb8a74b9';
         var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent(currentWord);
         
-        $.getJSON(URL, function(data){
-        if (parseInt(data.totalHits) > 0)
-        $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
-        else
-        console.log('No hits');
-    });
-
-    }
+        fetch(URL).then(function(response){
+            response.json().then(function(data){
+                console.log(data);
+                console.log(data.hits[0].pageURL);
+            })
+        })
+    };
   
     function gameScreen(){
 
