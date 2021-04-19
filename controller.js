@@ -28,6 +28,7 @@ $(document).ready(function () {
         fetch("https://wordsapiv1.p.rapidapi.com/words/" + dataArray[randomIndex] + "/definitions", {"method": "GET","headers": {"x-rapidapi-key": "7daefd239dmshb59ea7935809085p1e1b4djsn19eb3a98f6ad","x-rapidapi-host": "wordsapiv1.p.rapidapi.com"}
         }).then(function(response){
             response.json().then(function(data){
+                fetchImages();
                 console.log(data);
                 console.log(data.definitions[0].definition);
 
@@ -46,11 +47,29 @@ $(document).ready(function () {
         })    
     }
 
+    // api for images
+
+    var fetchImages = function() {
+        fetch(
+            "https://api.giphy.com/v1/gifs/search?&q=" + currentWord + "&api_key=kgqlteNu3OK20H24CkePMshKs5T2203p&limit=1&rating=g"
+            )
+    
+        .then(function(response) {
+            return response.json();
+        })
+    
+        .then(function(response) {
+            console.log(response.data[0]);
+        })     
+
+    }
+
     function gameScreen(){
 
         fetchWords();
 
         $('#gameContent').empty();
+        $('#gameContent').append('<div id="imageHolder"></div>');
         $('#gameContent').append('<div id="wordHolder"></div>');
         $('#gameContent').append('<div id="clueHolder"></div>');
         $('#gameContent').append('<div id="guesses">Previous guesses:</div>');
